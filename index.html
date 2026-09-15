@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Jennie Kim & Panduan Tugas Informatika XII</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bp: {
+                            pink: '#FF85A1',
+                            lightpink: '#FFE4E9',
+                            darkpink: '#E05275',
+                            black: '#121212',
+                            card: '#1A1A1A',
+                            accent: '#D4AF37'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-bp-black text-gray-100 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Application Main Header Navigation -->
+    <header class="sticky top-0 z-50 bg-bp-black/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo & Student Tag -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-bp-darkpink to-bp-pink flex items-center justify-center font-bold text-white shadow-lg shadow-bp-pink/30">
+                        JK
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold tracking-wider text-white">PORTFOLIO <span class="text-bp-pink">JENNIE KIM</span></h1>
+                        <p class="text-xs text-gray-400">Tugas Informatika XII - Git & Web Development</p>
+                    </div>
+                </div>
+
+                <!-- Main View Tabs -->
+                <nav class="hidden md:flex space-x-2 bg-gray-900 p-1.5 rounded-xl border border-gray-800">
+                    <button onclick="switchMainTab('preview')" id="main-tab-preview" class="px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 bg-bp-pink text-bp-black font-semibold shadow">
+                        <i class="fa-solid fa-eye mr-2"></i>Live Website
+                    </button>
+                    <button onclick="switchMainTab('vscode')" id="main-tab-vscode" class="px-4 py-2 text-sm font-medium rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-all duration-200">
+                        <i class="fa-solid fa-code mr-2"></i>Struktur File & Code VS Code
+                    </button>
+                    <button onclick="switchMainTab('docs')" id="main-tab-docs" class="px-4 py-2 text-sm font-medium rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-all duration-200">
+                        <i class="fa-solid fa-book-open mr-2"></i>Catatan Buku Dokumentasi
+                    </button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-b border-gray-800 px-4 pt-2 pb-4 space-y-2">
+            <button onclick="switchMainTab('preview'); toggleMobileMenu();" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-white bg-bp-darkpink">
+                <i class="fa-solid fa-eye mr-2"></i>Live Website
+            </button>
+            <button onclick="switchMainTab('vscode'); toggleMobileMenu();" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-800">
+                <i class="fa-solid fa-code mr-2"></i>Struktur File & Code VS Code
+            </button>
+            <button onclick="switchMainTab('docs'); toggleMobileMenu();" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-800">
+                <i class="fa-solid fa-book-open mr-2"></i>Catatan Buku Dokumentasi
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow">
+        
+        <!-- VIEW 1: LIVE WEBSITE PREVIEW -->
+        <section id="view-preview" class="block">
+            <!-- Sub-Navbar inside Live Website -->
+            <div class="bg-bp-card/50 backdrop-blur border-b border-gray-800 sticky top-16 z-40">
+                <div class="max-w-6xl mx-auto px-4 flex justify-between items-center h-12">
+                    <div class="text-xs uppercase tracking-widest text-bp-pink font-semibold">
+                        <i class="fa-solid fa-sparkles mr-1"></i> Jennie Kim Official Fan Portfolio
+                    </div>
+                    <div class="flex space-x-6 text-sm">
+                        <a href="#hero" class="hover:text-bp-pink transition-colors">Beranda</a>
+                        <a href="#about" class="hover:text-bp-pink transition-colors">Profil</a>
+                        <a href="#career" class="hover:text-bp-pink transition-colors">Karir</a>
+                        <a href="#gallery" class="hover:text-bp-pink transition-colors">Galeri</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Section -->
+            <div id="hero" class="relative overflow-hidden py-20 lg:py-28 bg-gradient-to-b from-bp-black via-gray-900 to-bp-black">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#FF85A1_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        <!-- Left Info -->
+                        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                            <div class="inline-flex items-center space-x-2 bg-bp-pink/10 border border-bp-pink/30 px-3 py-1.5 rounded-full text-bp-pink text-xs font-semibold uppercase tracking-wider">
+                                <span class="w-2 h-2 rounded-full bg-bp-pink animate-ping"></span>
+                                <span>Singer • Rapper • Fashion Icon</span>
+                            </div>
+                            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight font-serif text-white">
+                                JENNIE <span class="text-transparent bg-clip-text bg-gradient-to-r from-bp-pink to-rose-300">KIM</span>
+                            </h1>
+                            <p class="text-lg text-gray-300 leading-relaxed max-w-2xl">
+                                Anggota grup idola global <span class="text-bp-pink font-semibold">BLACKPINK</span>, solois berbakat, dan pendiri label <span class="text-white font-semibold">OA (Odd Atelier)</span>. Dikenal sebagai trendsetter fashion dunia dan 'Human Chanel'.
+                            </p>
+                            
+                            <!-- Quick Stats -->
+                            <div class="grid grid-cols-3 gap-4 pt-4 border-t border-gray-800">
+                                <div>
+                                    <div class="text-2xl font-bold text-bp-pink">2016</div>
+                                    <div class="text-xs text-gray-400">Debut BLACKPINK</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-bp-pink">85M+</div>
+                                    <div class="text-xs text-gray-400">Followers Instagram</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-bp-pink">OA</div>
+                                    <div class="text-xs text-gray-400">Own Agency (2023)</div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
+                                <a href="#about" class="px-6 py-3 rounded-full bg-bp-pink hover:bg-bp-darkpink text-bp-black font-bold text-sm transition-all shadow-lg shadow-bp-pink/20 flex items-center gap-2">
+                                    <i class="fa-solid fa-user"></i> Lihat Profil Lengkap
+                                </a>
+                                <a href="#gallery" class="px-6 py-3 rounded-full bg-gray-800 hover:bg-gray-700 text-white font-medium text-sm border border-gray-700 transition-all flex items-center gap-2">
+                                    <i class="fa-solid fa-image"></i> Galeri Foto
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Right Image -->
+                        <div class="lg:col-span-5 flex justify-center">
+                            <div class="relative group">
+                                <div class="absolute -inset-1 bg-gradient-to-r from-bp-pink to-purple-600 rounded-3xl blur opacity-40 group-hover:opacity-75 transition duration-500"></div>
+                                <div class="relative w-72 h-96 sm:w-80 sm:h-[420px] rounded-3xl overflow-hidden border-2 border-bp-pink/40 shadow-2xl bg-gray-800">
+                                    <img src="1.jpg"
+                                         alt="Jennie Kim Profile Picture" 
+                                         class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                                         onerror="this.onerror=null; this.src='https://placehold.co/400x550/1A1A1A/FF85A1?text=Jennie+Kim';">
+                                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/60 to-transparent p-4 text-center">
+                                        <p class="text-sm font-semibold text-white">Jennie Kim (제니)</p>
+                                        <p class="text-xs text-bp-pink">Seoul, Korea Selatan</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile & Personal Bio Section -->
+            <div id="about" class="py-16 bg-bp-card/30 border-y border-gray-800">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <h2 class="text-xs text-bp-pink uppercase font-bold tracking-widest mb-2">Biodata Singkat</h2>
+                        <h3 class="text-3xl font-extrabold font-serif text-white">Informasi Pribadi & Pendidikan</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Bio Details Card -->
+                        <div class="bg-bp-card p-6 rounded-2xl border border-gray-800 space-y-4">
+                            <h4 class="text-xl font-bold text-bp-pink border-b border-gray-800 pb-3 flex items-center gap-2">
+                                <i class="fa-id-card text-bp-pink"></i> Profil Diri
+                            </h4>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex justify-between py-1 border-b border-gray-800/50">
+                                    <span class="text-gray-400">Nama Lengkap:</span>
+                                    <span class="font-semibold text-white">Jennie Kim (김제니)</span>
+                                </div>
+                                <div class="flex justify-between py-1 border-b border-gray-800/50">
+                                    <span class="text-gray-400">Tanggal Lahir:</span>
+                                    <span class="font-semibold text-white">16 Januari 1996</span>
+                                </div>
+                                <div class="flex justify-between py-1 border-b border-gray-800/50">
+                                    <span class="text-gray-400">Tempat Lahir:</span>
+                                    <span class="font-semibold text-white">Seoul, Korea Selatan</span>
+                                </div>
+                                <div class="flex justify-between py-1 border-b border-gray-800/50">
+                                    <span class="text-gray-400">Posisi Grup:</span>
+                                    <span class="font-semibold text-bp-pink">Main Rapper, Lead Vocalist</span>
+                                </div>
+                                <div class="flex justify-between py-1 border-b border-gray-800/50">
+                                    <span class="text-gray-400">Agensi Utama:</span>
+                                    <span class="font-semibold text-white">OA (Odd Atelier) / YG Entertainment</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Education & Background Card -->
+                        <div class="bg-bp-card p-6 rounded-2xl border border-gray-800 space-y-4">
+                            <h4 class="text-xl font-bold text-bp-pink border-b border-gray-800 pb-3 flex items-center gap-2">
+                                <i class="fa-graduation-cap text-bp-pink"></i> Pendidikan & Latar Belakang
+                            </h4>
+                            <ul class="space-y-4 text-sm text-gray-300">
+                                <li class="flex items-start gap-3">
+                                    <div class="mt-1 w-2 h-2 rounded-full bg-bp-pink flex-shrink-0"></div>
+                                    <div>
+                                        <strong class="text-white block">Waikowhai Intermediate School</strong>
+                                        Auckland, Selandia Baru (Pendidikan Menengah Pertama).
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="mt-1 w-2 h-2 rounded-full bg-bp-pink flex-shrink-0"></div>
+                                    <div>
+                                        <strong class="text-white block">ACG Parnell College</strong>
+                                        Selandia Baru — Jennie belajar bahasa Inggris dan musik selama 5 tahun di Selandia Baru sebelum kembali ke Korea Selatan pada tahun 2010.
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="mt-1 w-2 h-2 rounded-full bg-bp-pink flex-shrink-0"></div>
+                                    <div>
+                                        <strong class="text-white block">Trainee YG Entertainment (2010 - 2016)</strong>
+                                        Menjalani masa pelatihan intensif vokal, rap, dan tarian selama 5 tahun 11 bulan.
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills & Hobbies Section -->
+            <div id="career" class="py-16">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <h2 class="text-xs text-bp-pink uppercase font-bold tracking-widest mb-2">Talenta & Kegemaran</h2>
+                        <h3 class="text-3xl font-extrabold font-serif text-white">Keahlian Utama & Hobi</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Skill 1 -->
+                        <div class="bg-bp-card p-6 rounded-2xl border border-gray-800 hover:border-bp-pink/50 transition duration-300">
+                            <div class="w-12 h-12 bg-bp-pink/10 rounded-xl flex items-center justify-center text-bp-pink text-2xl mb-4">
+                                <i class="fa-solid fa-microphone-lines"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">Rap & Vokal Unik</h4>
+                            <p class="text-sm text-gray-400">
+                                Dikenal dengan teknik rap cepat, artikulasi yang jelas, serta vokal yang powerful baik dalam penampilan grup maupun solo.
+                            </p>
+                        </div>
+
+                        <!-- Skill 2 -->
+                        <div class="bg-bp-card p-6 rounded-2xl border border-gray-800 hover:border-bp-pink/50 transition duration-300">
+                            <div class="w-12 h-12 bg-bp-pink/10 rounded-xl flex items-center justify-center text-bp-pink text-2xl mb-4">
+                                <i class="fa-solid fa-shirt"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">Fashion Styling & Design</h4>
+                            <p class="text-sm text-gray-400">
+                                House Ambassador untuk merek ternama dunia seperti **Chanel** & **Calvin Klein**. Sering merancang konsep fashion sendiri.
+                            </p>
+                        </div>
+
+                        <!-- Skill 3 -->
+                        <div class="bg-bp-card p-6 rounded-2xl border border-gray-800 hover:border-bp-pink/50 transition duration-300">
+                            <div class="w-12 h-12 bg-bp-pink/10 rounded-xl flex items-center justify-center text-bp-pink text-2xl mb-4">
+                                <i class="fa-solid fa-camera-retro"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">Fotografi & Pilates (Hobi)</h4>
+                            <p class="text-sm text-gray-400">
+                                Menyukai fotografi analog film (mengelola akun film @lesyeuxdenini), olahraga Pilates, dan membuat kue (baking).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Section -->
+            <div id="gallery" class="py-16 bg-bp-card/20 border-t border-gray-800">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <h2 class="text-xs text-bp-pink uppercase font-bold tracking-widest mb-2">Dokumentasi Visual</h2>
+                        <h3 class="text-3xl font-extrabold font-serif text-white">Galeri Foto Jennie</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl border border-gray-800 aspect-square bg-gray-900">
+                            <img src="2.jpg" alt="Jennie Stage Performance" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                                <span class="text-sm font-semibold text-white">Stage Performance</span>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl border border-gray-800 aspect-square bg-gray-900">
+                            <img src="3.jpg" alt="Fashion Shoot" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                                <span class="text-sm font-semibold text-white">Fashion & Brand Endorsement</span>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl border border-gray-800 aspect-square bg-gray-900">
+                            <img src="4.jpg" alt="Casual Photo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                                <span class="text-sm font-semibold text-white">Casual & Lifestyle</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer for Live Preview -->
+            <footer class="bg-bp-black border-t border-gray-800 py-8 text-center text-sm text-gray-500">
+                <p>© 2026 Tugas Informatika - Portofolio Idola Jennie Kim</p>
+                <p class="text-xs text-gray-600 mt-1">Dibuat menggunakan HTML, Native CSS & Git GitHub Pages Workflow</p>
+            </footer>
+        </section>
+
+        <!-- VIEW 2: VS CODE MULTI-FILE CODE GENERATOR -->
+        <section id="view-vscode" class="hidden p-4 sm:p-8 max-w-6xl mx-auto">
+            <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 mb-8">
+                <h2 class="text-2xl font-bold text-bp-pink mb-2"><i class="fa-solid fa-folder-tree mr-2"></i>Struktur Folder Proyek VS Code</h2>
+                <p class="text-sm text-gray-300 mb-4">
+                    Sesuai ketentuan tugas (CSS external, file HTML terpisah, dan aset di folder tersendiri), berikut adalah struktur folder yang wajib Anda buat di laptop/VS Code:
+                </p>
+                
+                <!-- Folder Structure Diagram -->
+                <div class="bg-bp-black p-4 rounded-xl border border-gray-800 font-mono text-sm text-green-400 leading-relaxed">
+                    📁 portofolio-jennie/<br>
+                    ├── 📁 assets/<br>
+                    │   └── 📁 img/<br>
+                    │       ├── jennie-profile.jpg<br>
+                    │       ├── jennie-1.jpg<br>
+                    │       └── jennie-2.jpg<br>
+                    ├── 📁 css/<br>
+                    │   └── style.css<br>
+                    ├── index.html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Halaman Beranda)<br>
+                    └── profile.html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Halaman Detail Profil & Karir)
+                </div>
+            </div>
+
+            <!-- Code Viewer Card -->
+            <div class="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden shadow-2xl">
+                <!-- File Tabs Header -->
+                <div class="flex border-b border-gray-800 bg-bp-black overflow-x-auto">
+                    <button onclick="switchCodeTab('code-index')" id="btn-code-index" class="code-tab active px-5 py-3 text-sm font-mono font-medium border-r border-gray-800 flex items-center gap-2">
+                        <i class="fa-fab fa-html5 text-orange-500"></i> index.html
+                    </button>
+                    <button onclick="switchCodeTab('code-profile')" id="btn-code-profile" class="code-tab px-5 py-3 text-sm font-mono font-medium border-r border-gray-800 flex items-center gap-2 text-gray-400">
+                        <i class="fa-fab fa-html5 text-orange-500"></i> profile.html
+                    </button>
+                    <button onclick="switchCodeTab('code-css')" id="btn-code-css" class="code-tab px-5 py-3 text-sm font-mono font-medium border-r border-gray-800 flex items-center gap-2 text-gray-400">
+                        <i class="fa-fab fa-css3-alt text-blue-500"></i> css/style.css
+                    </button>
+                </div>
+
+                <!-- Code Area 1: index.html -->
+                <div id="code-index" class="p-4 relative">
+                    <button onclick="copyCode('raw-index')" class="absolute top-6 right-6 bg-bp-pink hover:bg-bp-darkpink text-bp-black font-bold px-3 py-1.5 rounded text-xs flex items-center gap-1 z-10 transition">
+                        <i class="fa-solid fa-copy"></i> Salin Kode
+                    </button>
+                    <pre class="bg-bp-black p-4 rounded-xl text-gray-300 font-mono text-xs sm:text-sm overflow-x-auto leading-relaxed border border-gray-800 max-h-[500px]" id="raw-index"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Portofolio Jennie BLACKPINK - Beranda&lt;/title&gt;
+    &lt;!-- Link CSS External --&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Navbar Menu Terpisah --&gt;
+    &lt;header class="navbar"&gt;
+        &lt;div class="logo"&gt;Jennie Kim&lt;/div&gt;
+        &lt;nav&gt;
+            &lt;a href="index.html" class="active"&gt;Beranda&lt;/a&gt;
+            &lt;a href="profile.html"&gt;Profil Lengkap&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main class="hero"&gt;
+        &lt;div class="hero-content"&gt;
+            &lt;h1&gt;Halo, Saya Fans Jennie Kim!&lt;/h1&gt;
+            &lt;p&gt;Website ini adalah portofolio idola saya: Jennie Kim dari BLACKPINK.&lt;/p&gt;
+            &lt;a href="profile.html" class="btn"&gt;Lihat Profil Jennie&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="hero-image"&gt;
+            &lt;img src="assets/img/jennie-profile.jpg" alt="Jennie Kim"&gt;
+        &lt;/div&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;&copy; 2026 Tugas Informatika XII - GitHub Pages&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+
+                <!-- Code Area 2: profile.html -->
+                <div id="code-profile" class="p-4 relative hidden">
+                    <button onclick="copyCode('raw-profile')" class="absolute top-6 right-6 bg-bp-pink hover:bg-bp-darkpink text-bp-black font-bold px-3 py-1.5 rounded text-xs flex items-center gap-1 z-10 transition">
+                        <i class="fa-solid fa-copy"></i> Salin Kode
+                    </button>
+                    <pre class="bg-bp-black p-4 rounded-xl text-gray-300 font-mono text-xs sm:text-sm overflow-x-auto leading-relaxed border border-gray-800 max-h-[500px]" id="raw-profile"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Profil & Karir Jennie Kim&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header class="navbar"&gt;
+        &lt;div class="logo"&gt;Jennie Kim&lt;/div&gt;
+        &lt;nav&gt;
+            &lt;a href="index.html"&gt;Beranda&lt;/a&gt;
+            &lt;a href="profile.html" class="active"&gt;Profil Lengkap&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;section class="container"&gt;
+        &lt;h2&gt;Biodata & Karir&lt;/h2&gt;
+        &lt;div class="bio-card"&gt;
+            &lt;p&gt;&lt;strong&gt;Nama Lengkap:&lt;/strong&gt; Jennie Kim (제니)&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Tanggal Lahir:&lt;/strong&gt; 16 Januari 1996&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Pendidikan:&lt;/strong&gt; ACG Parnell College (Selandia Baru)&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Pekerjaan:&lt;/strong&gt; penyanyi, Rapper, Pendiri OA Agency&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Keahlian/Hobi:&lt;/strong&gt; Rapping, Fashion Styling, Pilates, Fotografi&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;h3&gt;Galeri Foto&lt;/h3&gt;
+        &lt;div class="gallery"&gt;
+            &lt;img src="assets/img/jennie-1.jpg" alt="Jennie Fashion"&gt;
+            &lt;img src="assets/img/jennie-2.jpg" alt="Jennie Stage"&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;&copy; 2026 Tugas Informatika XII&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+
+                <!-- Code Area 3: css/style.css -->
+                <div id="code-css" class="p-4 relative hidden">
+                    <button onclick="copyCode('raw-css')" class="absolute top-6 right-6 bg-bp-pink hover:bg-bp-darkpink text-bp-black font-bold px-3 py-1.5 rounded text-xs flex items-center gap-1 z-10 transition">
+                        <i class="fa-solid fa-copy"></i> Salin Kode
+                    </button>
+                    <pre class="bg-bp-black p-4 rounded-xl text-gray-300 font-mono text-xs sm:text-sm overflow-x-auto leading-relaxed border border-gray-800 max-h-[500px]" id="raw-css"><code>/* CSS Native - Portofolio Jennie Kim */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: #1a1a1a;
+    border-bottom: 2px solid #FF85A1;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FF85A1;
+}
+
+.navbar nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 500;
+}
+
+.navbar nav a.active, .navbar nav a:hover {
+    color: #FF85A1;
+}
+
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 5%;
+    min-height: 80vh;
+}
+
+.hero-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #FF85A1;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #FF85A1;
+    color: #121212;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.hero-image img {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 3px solid #FF85A1;
+}
+
+.container {
+    padding: 3rem 5%;
+}
+
+.bio-card {
+    background: #1a1a1a;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 1rem;
+}
+
+.gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #1a1a1a;
+    color: #888;
+    margin-top: 2rem;
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 3: PHYSICAL NOTEBOOK DOCUMENTATION GUIDE -->
+        <section id="view-docs" class="hidden p-4 sm:p-8 max-w-5xl mx-auto">
+            <div class="bg-bp-card border border-gray-800 rounded-2xl p-6 sm:p-8 shadow-xl space-y-8">
+                
+                <div class="border-b border-gray-800 pb-6">
+                    <span class="bg-bp-pink/20 text-bp-pink border border-bp-pink/30 px-3 py-1 rounded-full text-xs font-bold uppercase">Panduan Catatan Wajib</span>
+                    <h2 class="text-3xl font-extrabold text-white mt-3">Draft Isian Buku Catatan Informatika XII</h2>
+                    <p class="text-sm text-gray-400 mt-1">Salinlah poin-poin terstruktur di bawah ini ke dalam buku catatan fisik Informatika Anda sesuai ketentuan guru.</p>
+                </div>
+
+                <!-- Section 1 -->
+                <div class="space-y-3 bg-gray-900/60 p-5 rounded-xl border border-gray-800">
+                    <h3 class="text-lg font-bold text-bp-pink flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-bp-pink text-bp-black text-xs flex items-center justify-center font-black">1</span>
+                        Ide dan Tujuan Website
+                    </h3>
+                    <div class="text-sm text-gray-300 space-y-2 pl-8">
+                        <p><strong>Ide:</strong> Membuat website portofolio interaktif untuk idola musik global, yaitu <em>Jennie Kim (BLACKPINK)</em>.</p>
+                        <p><strong>Tujuan:</strong> Menyajikan informasi profil, latar belakang pendidikan, perjalanan karir, keahlian, serta galeri foto Jennie secara terstruktur sekaligus mempraktikkan alur kerja pengembangan web menggunakan Git, GitHub, dan GitHub Pages.</p>
+                    </div>
+                </div>
+
+                <!-- Section 2 -->
+                <div class="space-y-3 bg-gray-900/60 p-5 rounded-xl border border-gray-800">
+                    <h3 class="text-lg font-bold text-bp-pink flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-bp-pink text-bp-black text-xs flex items-center justify-center font-black">2</span>
+                        Struktur Proyek HTML & CSS
+                    </h3>
+                    <div class="text-sm text-gray-300 space-y-2 pl-8">
+                        <p>• <strong>Folder Utama:</strong> <code class="text-bp-pink">portofolio-jennie/</code></p>
+                        <p>• <strong>Folder Aset:</strong> <code class="text-bp-pink">assets/img/</code> (Menyimpan seluruh foto portofolio agar rapi).</p>
+                        <p>• <strong>Folder Styling:</strong> <code class="text-bp-pink">css/style.css</code> (Menggunakan CSS Native External).</p>
+                        <p>• <strong>Menu File Terpisah:</strong> <code class="text-bp-pink">index.html</code> (Beranda Utama) dan <code class="text-bp-pink">profile.html</code> (Halaman Detail Profil & Galeri).</p>
+                    </div>
+                </div>
+
+                <!-- Section 3 & 4 -->
+                <div class="space-y-3 bg-gray-900/60 p-5 rounded-xl border border-gray-800">
+                    <h3 class="text-lg font-bold text-bp-pink flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-bp-pink text-bp-black text-xs flex items-center justify-center font-black">3</span>
+                        Proses Git & GitHub (Langkah-Langkah Komando)
+                    </h3>
+                    <div class="text-sm text-gray-300 space-y-3 pl-8">
+                        <div>
+                            <strong class="text-white block mb-1">A. Inisialisasi & Penghubungan ke GitHub Repository:</strong>
+                            <ol class="list-decimal list-inside space-y-1 font-mono text-xs bg-bp-black p-3 rounded border border-gray-800 text-green-400">
+                                <li>git init</li>
+                                <li>git add .</li>
+                                <li>git commit -m "Initial commit - Portofolio Jennie Kim"</li>
+                                <li>git branch -M main</li>
+                                <li>git remote add origin https://github.com/USERNAME/portofolio-jennie.git</li>
+                                <li>git push -u origin main</li>
+                            </ol>
+                        </div>
+                        <div>
+                            <strong class="text-white block mb-1">B. Mengaktifkan GitHub Pages:</strong>
+                            <p class="text-gray-300">Masuk ke Repo GitHub &rarr; Tab <em>Settings</em> &rarr; Menu <em>Pages</em> &rarr; Pada bagian <em>Source</em> pilih branch <code class="text-bp-pink">main</code> &rarr; Klik <em>Save</em>. Tunggu URL publik terbit.</p>
+                        </div>
+                        <div>
+                            <strong class="text-white block mb-1">C. Proses Edit File & Push Ulang:</strong>
+                            <ol class="list-decimal list-inside space-y-1 font-mono text-xs bg-bp-black p-3 rounded border border-gray-800 text-green-400">
+                                <li>git add .</li>
+                                <li>git commit -m "Update deskripsi biodata dan galeri"</li>
+                                <li>git push</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5 -->
+                <div class="space-y-3 bg-gray-900/60 p-5 rounded-xl border border-gray-800">
+                    <h3 class="text-lg font-bold text-bp-pink flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-bp-pink text-bp-black text-xs flex items-center justify-center font-black">4</span>
+                        Penjelasan Konsep Push & Pull
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm pl-8">
+                        <div class="bg-bp-black p-4 rounded-lg border border-gray-800">
+                            <strong class="text-bp-pink block text-base mb-1"><i class="fa-solid fa-upload mr-1"></i> PUSH</strong>
+                            <p class="text-gray-300">Proses mengirimkan data perubahan komit dari server lokal (komputer/laptop) ke repository online di cloud (GitHub).</p>
+                        </div>
+                        <div class="bg-bp-black p-4 rounded-lg border border-gray-800">
+                            <strong class="text-bp-pink block text-base mb-1"><i class="fa-solid fa-download mr-1"></i> PULL</strong>
+                            <p class="text-gray-300">Proses mengambil (fetch & merge) data/perubahan terbaru dari remote repository di cloud (GitHub) ke server lokal (komputer/laptop).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 6 & 7 -->
+                <div class="space-y-3 bg-gray-900/60 p-5 rounded-xl border border-gray-800">
+                    <h3 class="text-lg font-bold text-bp-pink flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-bp-pink text-bp-black text-xs flex items-center justify-center font-black">5</span>
+                        Kendala, Solusi, dan Kesimpulan
+                    </h3>
+                    <div class="text-sm text-gray-300 space-y-3 pl-8">
+                        <p><strong>Kendala:</strong> Jalur (path) gambar tidak terbaca saat diakses melalui GitHub Pages.</p>
+                        <p><strong>Solusi:</strong> Memastikan penulisan folder aset bersifat relatif (misal: <code class="text-bp-pink">assets/img/jennie.jpg</code>) dan memperhatikan perbedaan huruf kapital (case-sensitive) pada Linux/GitHub server.</p>
+                        <p><strong>Kesimpulan:</strong> Melalui tugas ini, saya tidak hanya memahami sintaks dasar HTML dan CSS Native, tetapi juga menguasai Version Control System (Git) untuk memublikasikan website secara aktual menggunakan GitHub Pages.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-bp-pink text-bp-black font-bold px-4 py-3 rounded-xl shadow-2xl transition-all duration-300 opacity-0 translate-y-10 pointer-events-none flex items-center gap-2">
+        <i class="fa-solid fa-check-circle text-lg"></i>
+        <span id="toast-message">Kode berhasil disalin!</span>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Main Application Tab Switching
+        function switchMainTab(tab) {
+            const previewView = document.getElementById('view-preview');
+            const vscodeView = document.getElementById('view-vscode');
+            const docsView = document.getElementById('view-docs');
+
+            const btnPreview = document.getElementById('main-tab-preview');
+            const btnVscode = document.getElementById('main-tab-vscode');
+            const btnDocs = document.getElementById('main-tab-docs');
+
+            // Reset all active states
+            previewView.classList.add('hidden');
+            vscodeView.classList.add('hidden');
+            docsView.classList.add('hidden');
+
+            btnPreview.className = "px-4 py-2 text-sm font-medium rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-all duration-200";
+            btnVscode.className = "px-4 py-2 text-sm font-medium rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-all duration-200";
+            btnDocs.className = "px-4 py-2 text-sm font-medium rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-all duration-200";
+
+            if (tab === 'preview') {
+                previewView.classList.remove('hidden');
+                btnPreview.className = "px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 bg-bp-pink text-bp-black font-semibold shadow";
+            } else if (tab === 'vscode') {
+                vscodeView.classList.remove('hidden');
+                btnVscode.className = "px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 bg-bp-pink text-bp-black font-semibold shadow";
+            } else if (tab === 'docs') {
+                docsView.classList.remove('hidden');
+                btnDocs.className = "px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 bg-bp-pink text-bp-black font-semibold shadow";
+            }
+        }
+
+        // VS Code File Code Tab Switcher
+        function switchCodeTab(codeId) {
+            const indexCode = document.getElementById('code-index');
+            const profileCode = document.getElementById('code-profile');
+            const cssCode = document.getElementById('code-css');
+
+            const btnIndex = document.getElementById('btn-code-index');
+            const btnProfile = document.getElementById('btn-code-profile');
+            const btnCss = document.getElementById('btn-code-css');
+
+            indexCode.classList.add('hidden');
+            profileCode.classList.add('hidden');
+            cssCode.classList.add('hidden');
+
+            btnIndex.classList.remove('active');
+            btnProfile.classList.remove('active');
+            btnCss.classList.remove('active');
+
+            if (codeId === 'code-index') {
+                indexCode.classList.remove('hidden');
+                btnIndex.classList.add('active');
+            } else if (codeId === 'code-profile') {
+                profileCode.classList.remove('hidden');
+                btnProfile.classList.add('active');
+            } else if (codeId === 'code-css') {
+                cssCode.classList.remove('hidden');
+                btnCss.classList.add('active');
+            }
+        }
+
+        // Toggle Mobile Header Menu
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Copy Code to Clipboard Functionality
+        function copyCode(elementId) {
+            const codeText = document.getElementById(elementId).innerText;
+            
+            // Create dummy element for execCommand copy
+            const dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = codeText;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+
+            showToast("Kode berhasil disalin ke clipboard!");
+        }
+
+        // Show Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            
+            toastMessage.innerText = message;
+            toast.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

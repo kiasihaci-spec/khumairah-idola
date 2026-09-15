@@ -1,0 +1,34 @@
+/* Custom Scrollbar */
+html {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #121212;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #FF85A1;
+    border-radius: 4px;
+}
+
+.tab-btn.active {
+    border-bottom: 3px solid #FF85A1;
+    color: #FF85A1;
+    font-weight: 700;
+}
+
+.code-tab.active {
+    background-color: #2D2D2D;
+    color: #FF85A1;
+    border-top: 2px solid #FF85A1;
+}
+
+body {
+    background-color: #121212;
+    color: #f3f4f6;
+}
